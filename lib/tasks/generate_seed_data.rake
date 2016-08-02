@@ -1,9 +1,9 @@
 namespace :db do
   desc 'Generate the event data and populate the scores for drivers of various tenants.'
   task load_seed_data: :environment do
-    tenant_count = 3 #5
-    vehicle_count_per_tenant = [20, 15, 10] #[100, 50, 20, 15, 15]
-    num_days = 15.days/1.day
+    tenant_count = 5
+    vehicle_count_per_tenant = [100, 50, 20, 15, 15]
+    num_days = 180.days/1.day
     tenant_vehicle_hash = create_tenants_and_vehicles(tenant_count, vehicle_count_per_tenant)
     values = tenant_vehicle_hash.values[0]
     values.each do |vehicle_id, driver_id|
