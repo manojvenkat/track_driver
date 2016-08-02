@@ -1,0 +1,7 @@
+<li>
+  <%= link_to tenant.name, tenant %>
+  <% if current_user.admin? %>
+    | <%= link_to "delete", tenant, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

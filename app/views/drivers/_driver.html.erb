@@ -1,0 +1,7 @@
+<li>
+  <%= link_to driver.license_id, driver %>
+  <% if current_user.admin? %>
+    | <%= link_to "delete", driver, method: :delete,
+                                  data: { confirm: "You sure?" } %>
+  <% end %>
+</li>

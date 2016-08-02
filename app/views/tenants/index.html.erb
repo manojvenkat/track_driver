@@ -1,0 +1,12 @@
+<% provide(:title, 'All Tenants') %>
+<h1>All Tenants</h1>
+
+<h2> <%= link_to "Create Tenant", new_tenant_path %> </h2>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @tenants %>
+</ul>
+
+<%= will_paginate %>

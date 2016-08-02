@@ -1,0 +1,15 @@
+<% provide(:title, @tenant.name) %>
+<div class="row">
+  <aside class="col-md-4">
+    <section class="user_info">
+      <h1>
+        <%= @tenant.name %>
+      </h1>
+    </section>
+  </aside>
+</div>
+
+
+<ul class="users">
+  <%= render @drivers %>
+</ul>

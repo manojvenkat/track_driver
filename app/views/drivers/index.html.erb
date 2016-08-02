@@ -1,0 +1,12 @@
+<% provide(:title, 'All Tenants') %>
+<h1>All Drivers</h1>
+
+<h2> <%= link_to "Create Driver", new_driver_path %> </h2>
+
+<%= will_paginate %>
+
+<ul class="users">
+  <%= render @drivers %>
+</ul>
+
+<%= will_paginate %>

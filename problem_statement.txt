@@ -1,0 +1,22 @@
+Please try to finish it all by end of Tuesday, 2nd Aug. Send me whatever you are able to implement.
+
+Here is the problem statement -
+Please design (a block architecture diagram) - Phase 1 (By Monday noon)
+A short justification of the choices you make – e.g. App server, database etc – Phase 1 (Monday noon)
+Please implement the data creation tool and populate data on a server that I can access. Also share the code and db schema – Phase 2 (Tuesday EOD)
+Please implement a tool or web interface or android app, that accepts a Tenant and a date range (granularity can be days/week etc.), and lists down drivers with their corresponding score; in descending order of driver score – Phase 3 (Tuesday EOD).
+Details -
+5 tenants in the system, T1, T2, ….., T5
+# of Vehicles. T1 => 100, T2 => 50, T3 => 20, T4 and T5 => 15 each
+Each vehicle runs about 10 hours a day. Some vehicles may run morning 8 to evening 8 (with some random breaks in between), while others may start at 10 and work till 11 PM in night.
+We capture data every minute. Each minute results in a green event (no alert), yellow event (moderate risk) or Red alert (severe risk).
+Drivers are scored as following -
+For each green minute => +1 points
+For each Yellow minute =>
+If driver mistake => -2% points
+If not driver mistake => +10 points
+For each Red minute =>
+If driver mistake => -10% points
+If not driver mistake => +100 points
+Write a tool that generates random data for the above scenario for a 3 month period.
+Write a web based app to accept the inputs and list the driver scores – normalised. Normalized score = driver points / max. points he could have accumulated for the duration he drove. (For simplicity, assume Max score possible = No. of minutes he drove during the time period)
