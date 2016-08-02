@@ -1,5 +1,87 @@
-users
-tenants
-vehicle
-driver
-daily_score
+Table - users
+
+string   "name"
+string   "email"
+datetime "created_at",        null: false
+datetime "updated_at",        null: false
+string   "password_digest"
+string   "remember_digest"
+boolean  "admin",             default: false
+string   "activation_digest"
+boolean  "activated",         default: true
+datetime "activated_at",      
+string   "reset_digest"
+datetime "reset_sent_at"
+integer  "tenant_id"
+
+index on ["email"], name: "index_users_on_email", unique: true
+index on ["tenant_id"], name: "index_users_on_tenant_id"
+
+
+-------------------------------------------------------------------------------------
+
+Table - tenants
+
+string   "name"
+string   "city"
+datetime "created_at", null: false
+datetime "updated_at", null: false
+text     "email"
+
+
+-------------------------------------------------------------------------------------
+
+Table - vehicles
+
+string   "registration", null: false
+integer  "tenant_id",    null: false
+datetime "created_at",   null: false
+datetime "updated_at",   null: false
+
+index on ["tenant_id"], name: "index_vehicles_on_tenant_id"
+
+-------------------------------------------------------------------------------------
+
+
+Table - drivers
+
+string   "license_id", null: false
+integer  "tenant_id",  null: false
+datetime "created_at", null: false
+datetime "updated_at", null: false
+
+index on ["tenant_id"], name: "index_drivers_on_tenant_id"
+
+-------------------------------------------------------------------------------------
+
+Table - daily_scores
+
+integer  "driver_id",                null: false
+integer  "vehicle_id",               null: false
+integer  "score"
+datetime "driving_date"
+datetime "created_at",               null: false
+datetime "updated_at",               null: false
+integer  "max_score",    default: 0, null: false
+
+index on ["driver_id"], name: "index_daily_scores_on_driver_id"
+index on ["driving_date"], name: "index_daily_scores_on_driving_date"
+index on ["vehicle_id"], name: "index_daily_scores_on_vehicle_id"
+
+-------------------------------------------------------------------------------------
+
+Table - Delayed Jobs
+
+integer  "priority",   default: 0, null: false
+integer  "attempts",   default: 0, null: false
+text     "handler",                null: false
+text     "last_error"
+datetime "run_at"
+datetime "locked_at"
+datetime "failed_at"
+string   "locked_by"
+string   "queue"
+datetime "created_at"
+datetime "updated_at"
+
+add_index on ["priority", "run_at"], name: "delayed_jobs_priority"
